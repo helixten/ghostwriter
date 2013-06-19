@@ -1,25 +1,24 @@
 (function($, ko) {
-
-  // Create Drawing instance
-  
-  var drawing = new Drawing();
   
   // Create VM instances
   
-  var mouse         = new Mouse(),
+  var canvas        = new Canvas('artboard', 'workboard'),
+      drawing       = new Drawing(canvas);
+      mouse         = new Mouse(),
       activebrush   = ko.observable(null),
+      eraser        = new Brush(mouse, 'eraser', 'eraser_holder', activebrush, 'drawing', 'eraserRenderer', drawing),
       pen           = new Brush(mouse, 'pen', 'pen_holder', activebrush, 'drawing', 'inkRenderer', drawing)
-      spraygun      = new Brush(mouse, 'spraygun', 'spraygun_holder', activebrush, 'drawing', 'waterRenderer', drawing),
-      marker    = new Brush(mouse, 'marker', 'marker_holder', activebrush, 'drawing', 'markerRenderer', drawing),
+      spraygun      = new Brush(mouse, 'spraygun', 'spraygun_holder', activebrush, 'drawing', 'sprayRenderer', drawing),
+      marker        = new Brush(mouse, 'marker', 'marker_holder', activebrush, 'drawing', 'markerRenderer', drawing),
       palette       = new Palette(drawing),
-      canvas        = new Canvas('artboard', 'workboard'),
-      controls      = new Controls(drawing);
+      controls      = new Controls(drawing, palette);
   
   // Create Renderers
   
-  var waterRenderer   = new WaterRenderer(canvas, palette),
+  var sprayRenderer   = new SprayRenderer(canvas, palette),
       inkRenderer     = new InkRenderer(canvas, palette),
-      markerRenderer  = new MarkerRenderer(canvas, palette);
+      markerRenderer  = new MarkerRenderer(canvas, palette),
+      eraserRenderer  = new EraserRenderer(canvas, palette);
     
   // Init ViewModels
   
@@ -35,41 +34,21 @@
     }
   });
   
-  // Define global ViewModel
-  
-  window.ViewModel = {
-    pen: pen,
-    spraygun: spraygun,
-    marker: marker,
-    mouse: mouse,
-    activebrush: activebrush,
-    palette: palette,
-    canvas: canvas,
-    controls: controls,
-    drawing: drawing
-  };
-  
   // Bind Views to ViewModel
   
-  ko.applyBindings(ViewModel);
+  ko.applyBindings(pen, 'pen');
+  ko.applyBindings(spraygun, 'spray');
+  ko.applyBindings(marker, 'marker');
+  ko.applyBindings(eraser, 'eraser');
+  ko.applyBindings(controls, 'controls');
   
   // Non-standard bindings
   
-  $('#wrap').bind('click', function(event) {
-    //console.dir(event);
+  $('.color').click(function(event) {
+    palette.active($(this).attr('data-color'));
+    $('.color').removeClass('active');
+    $(this).addClass('active');
   });
-  
-  $('#sidebar').mouseenter(
-    function(event) {
-      ViewModel.activebrush().tracking(false);
-      return false;
-    });
-  $('#sidebar').mouseleave(
-    function(event) {
-      ViewModel.activebrush().tracking(true);
-      return false;
-    }
-  );
   
   // Modify the DOM
   
@@ -82,8 +61,8 @@
   document.onselectstart = function() {return false;} // ie
   document.onmousedown = function() {return false;} // mozilla
   
-  // Draw any saved path
+  // Load any stored image
   
-  drawing.play(30);
+  drawing.load();
   
 })(jQuery, ko);

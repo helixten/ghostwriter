@@ -23,6 +23,7 @@
     
     this.visible = ko.observable(true);
     this.tracking = ko.observable(true);
+    this.activebrush = activebrush;
     
     this.active = ko.dependentObservable(function() {
       return (activebrush() === this);
@@ -36,8 +37,9 @@
       if (this.active()) {
         if (this.tracking()) {
           var container = $('#' + this.container).offset(),
-              mouse = this.mouse.pos();
-          this.lastPos = {x: (mouse.x - container.left), y: (mouse.y - container.top)};
+              mouse = this.mouse.pos(),
+              x = Math.max(-10, (mouse.x - container.left));
+          this.lastPos = {x: x, y: (mouse.y - container.top)};
         }
       }
       else {
@@ -51,7 +53,7 @@
     this.wx = ko.observable(this.pos().x);
     
     this.down = ko.dependentObservable(function() {
-      if (this.active() && this.tracking() && !this.drawing.playing()) {
+      if (this.active() && this.tracking()) {
         return this.mouse.down();
       }
       else {
@@ -120,6 +122,12 @@
       
       window.setTimeout(update, 1000 / 25);
     })();
+  }
+  
+  Brush.prototype = {
+    activate: function() {
+      this.activebrush(this);
+    }
   }
   
   window.Brush = Brush;

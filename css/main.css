@@ -6,10 +6,11 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
 }
 
 body.brushy {
-  cursor: url(images/chrome_cursor.png), url(images/blank.cur), none !important;
+  cursor: url(images/chrome_cursor.png), none !important;
 }
 
 a {
@@ -30,7 +31,7 @@ ul {
   position: absolute;
   width: 950px;
   height: 500px;
-  top: 50%;
+  top: 48%;
   left: 50%;
   margin-top: -250px;
   margin-left: -570px;
@@ -44,7 +45,7 @@ ul {
   height: 500px;
   background: #eee url(images/paper3.jpg);
   box-shadow: 1px 1px 5px #000;
-  cursor: url(images/chrome_cursor.png), url(images/blank.cur), none !important;
+  cursor: url(images/chrome_cursor.png), none !important;
 }
 
 #artboard, #workboard {
@@ -56,7 +57,7 @@ ul {
 }
 
 .brushy #artboard {
-  cursor: url(images/blank_google_chrome.cur), url(images/blank.cur), none;
+  cursor: url(images/chrome_cursor.png), none !important;
 }
 
 /* Sidebar controls */
@@ -73,42 +74,18 @@ ul {
 
 /* Buttons */
 
-#controls {
-  position: absolute;
-  top: 170px;
-  right: 80px;
-}
-
-#controls li {
-  margin-bottom: 10px;
-}
-
-#controls a {
+#newbutton {
+  position: relative;
+  left: -6px;
+  top: -13px;
   display: block;
+  width: 60px;
+  height: 54px;
+  background: transparent url(images/new.png) top left no-repeat;
 }
 
-#controls a span {
+#newbutton span {
   display: none;
-}
-
-#playbutton {
-  width: 72px;
-  height: 82px;
-  background: transparent url(images/switch_up.png) top left no-repeat;
-}
-
-#playbutton.playing {
-  background-image: url(images/switch_down.png);  
-}
-
-#clearbutton {
-  width: 72px;
-  height: 34px;
-  background: transparent url(images/clear.png) top left no-repeat;
-}
-
-#clearbutton:hover {
-  background-position: bottom left;
 }
 
 /* Drawing tools */
@@ -116,7 +93,7 @@ ul {
 #toolbox {
   z-index: 8000;
   position: absolute;
-  top: 200px;
+  top: 70px;
   right: -80px;
 }
 #toolbox ul {
@@ -143,7 +120,7 @@ ul {
 #palette {
   position: absolute;
   right: 0px;
-  top: 0;
+  top: 10px;
   z-index: 10000;
 }
 
@@ -168,10 +145,14 @@ ul {
   background: transparent url(images/container.png) top left no-repeat;
 }
 
+.color.active {
+  left: -10px;
+}
+
 /* Brushes */
 
 .brush {
-  cursor: url(images/chrome_cursor.png), url(images/blank.cur), none !important;
+  cursor: url(images/chrome_cursor.png), none !important;
 }
 
 /* Pen */
@@ -207,7 +188,7 @@ ul {
 }
 
 
-/* Brush */
+/* Spraygun */
 
 #spraygun {
   position: absolute;
@@ -263,4 +244,75 @@ ul {
 }
 #marker.down .shadow {
   left: -25px;
+}
+
+/* Eraser */
+
+#eraser {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 184px;
+}
+#eraser .brush {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  background: transparent url(images/eraser.png) top center no-repeat;
+  width: 70px;
+  height: 184px;
+}
+#eraser .shadow {
+  position: absolute;
+  left: 23px;
+  top: 40px;
+  width: 80px;
+  height: 104px;
+  background: transparent url(images/shadow_eraser.png) bottom left no-repeat;
+}
+#eraser.down .brush {
+  top: 0px;
+}
+#eraser.down .shadow {
+  left: 20px;
+}
+
+
+/* Footer */
+
+#footer, #highlights {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+  color: #c49368;
+  font-size: 0.8em;
+}
+
+#footer {
+  padding-top: 10px;
+  z-index: 20000;
+  left: 200px;
+  right: 0;
+  top: 500px;
+}
+
+#footer strong {
+  font-size: 1.3em;
+}
+
+#footer li {
+  margin: 3px;
+}
+
+#highlights {
+  left: 200px;
+  right: 0;
+  top: -25px;
+}
+
+#highlights li {
+  float: left;
+  margin-right: 20px;
 }
