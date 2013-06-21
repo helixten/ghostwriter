@@ -8,8 +8,8 @@
       activebrush   = ko.observable(null),
       eraser        = new Brush(mouse, 'eraser', 'eraser_holder', activebrush, 'drawing', 'eraserRenderer', drawing),
       pen           = new Brush(mouse, 'pen', 'pen_holder', activebrush, 'drawing', 'inkRenderer', drawing)
-      spraygun      = new Brush(mouse, 'spraygun', 'spraygun_holder', activebrush, 'drawing', 'sprayRenderer', drawing),
-      marker        = new Brush(mouse, 'marker', 'marker_holder', activebrush, 'drawing', 'markerRenderer', drawing),
+   spraygun      = new Brush(mouse, 'spraygun', 'spraygun_holder', activebrush, 'drawing', 'sprayRenderer', drawing),
+     marker        = new Brush(mouse, 'marker', 'marker_holder', activebrush, 'drawing', 'markerRenderer', drawing),
       palette       = new Palette(drawing),
       controls      = new Controls(drawing, palette);
   
@@ -58,8 +58,8 @@
 
   // Disable text selection
   
-  document.onselectstart = function() {return false;} // ie
-  document.onmousedown = function() {return false;} // mozilla
+//  document.onselectstart = function() {return false;} // ie
+//  document.onmousedown = function() {return false;} // mozilla
   
   // Load any stored image
   

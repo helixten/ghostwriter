@@ -1,12 +1,18 @@
 body {
   background: #333;
   overflow: hidden;
-  background: url(images/wood2.jpg) top left;
+  background: url(http://subtlepatterns.com/patterns/tileable_wood_texture.png) top left;
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
   font-family: "helvetica neue", helvetica, arial, sans-serif;
+  -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
 
 body.brushy {
@@ -43,9 +49,10 @@ ul {
   right: 0;
   width: 750px;
   height: 500px;
-  background: #eee url(images/paper3.jpg);
+  background: #eee url(http://subtlepatterns.com/patterns/paper.png);
   box-shadow: 1px 1px 5px #000;
   cursor: url(images/chrome_cursor.png), none !important;
+  
 }
 
 #artboard, #workboard {
@@ -105,8 +112,7 @@ ul {
   margin: 50px 10px;
   width: 50px;
   height: 50px;
-  background-color: rgba(255, 255, 255, .07);
-  -webkit-border-radius: 5px;
+ 
 }
 #toolbox, #toolbox ul, #toolbox li {
 
@@ -155,6 +161,7 @@ ul {
   cursor: url(images/chrome_cursor.png), none !important;
 }
 
+
 /* Pen */
 
 #pen {
@@ -196,6 +203,7 @@ ul {
   left: 0;
   width: 75px;
   height: 716px;
+  display:none;
 }
 #spraygun .brush {
   position: absolute;
@@ -222,6 +230,7 @@ ul {
   left: 0;
   width: 43px;
   height: 760px;
+    display:none;
 }
 #marker .brush {
   position: absolute;

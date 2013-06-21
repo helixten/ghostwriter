@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-<!--
-
-Ghostwriter, (c) Skookum, released under the GPL
-for more information, contact the author, Hunter Loftis <hunter@skookum.com>
-
--->
 
 <head>
-  <title>Ghostwriter, by Skookum.com</title>
+  <title>Color</title>
   <link href='css/main.css' media='all' rel='stylesheet' type='text/css' />
 </head>
 
@@ -17,15 +11,6 @@ for more information, contact the author, Hunter Loftis <hunter@skookum.com>
   
   <div id="wrap">
   
-    <div id="highlights">
-      <ul>
-        <li>with:</li>
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>Canvas</li>
-        <li>LocalStorage</li>
-      </ul>
-    </div>
     
     <div id="drawing">
       <canvas id="artboard" width="750" height="500"></canvas>
@@ -40,18 +25,18 @@ for more information, contact the author, Hunter Loftis <hunter@skookum.com>
         <div class="shadow" data-bind-pen="style: {webkitTransform: shadowTransform, MozTransform: shadowTransform, msTransform: shadowTransform, transform: shadowTransform}"></div>
         <div class="brush" data-bind-pen="style: {webkitTransform: transform, MozTransform: transform, msTransform: transform, transform: transform}"></div>
       </div>
-      
-      <div id="spraygun" data-bind-spray="visible: visible, css: {down: down}, style: {left: left, top: top, zIndex: zIndex}">
+  
+      <div id="spraygun" style="display:none;" data-bind-spray="visible: visible, css: {down: down}, style: {left: left, top: top, zIndex: zIndex}">
         <div class="shadow" data-bind-spray="style: {webkitTransform: shadowTransform, MozTransform: shadowTransform, msTransform: shadowTransform, transform: shadowTransform}"></div>
         <div class="brush" data-bind-spray="style: {webkitTransform: transform, MozTransform: transform, msTransform: transform, transform: transform}"></div>
       </div>
       
-      <div id="marker" data-bind-marker="visible: visible, css: {down: down}, style: {left: left, top: top, zIndex: zIndex}">
+      <div id="marker"  style="display:none;" data-bind-marker="visible: visible, css: {down: down}, style: {left: left, top: top, zIndex: zIndex}">
         <div class="shadow" data-bind-marker="style: {webkitTransform: shadowTransform, MozTransform: shadowTransform, msTransform: shadowTransform, transform: shadowTransform}"></div>
         <div class="brush" data-bind-marker="style: {webkitTransform: transform, MozTransform: transform, msTransform: transform, transform: transform}"></div>
       </div>
     </div>
-    
+   
     <div id="sidebar">
       
       <div id="palette">
@@ -68,25 +53,17 @@ for more information, contact the author, Hunter Loftis <hunter@skookum.com>
       </div>
       
     </div>
-    
+
     <div id="toolbox">
       <ul>
         <li id="eraser_holder" data-bind-eraser="css: {invisible: active}, click: activate"></li>
-        <li id="marker_holder" data-bind-marker="css: {invisible: active}, click: activate"></li>
+       <li id="marker_holder" data-bind-marker="css: {invisible: active}, click: activate"></li>
         <li id="spraygun_holder" data-bind-spray="css: {invisible: active}, click: activate"></li>
-        <li id="pen_holder" data-bind-pen="css: {invisible: active}, click: activate"></li>
+        <li id="pen_holder" data-bind-pen="css: {invisible: active}, click: activate"></li> 
       </ul>
     </div>
-    
-    <div id="footer">
-      <ul>
-        <li><strong>Ghostwriter &copy; <a href="http://skookum.com">Skookum</a></strong> 2011 --- open sourced at <a href="https://github.com/Skookum/ghostwriter">github</a></li>
-        <li>Paper texture by <a href='http://bleeding-dragon.deviantart.com/art/10-old-paper-texture-32401994'>'Bleeding-Dragon'</a></li>
-        <li>Wood texture by <a href='http://nortago.deviantart.com/art/Bg-Texture-wood-38841113'>'nortago'</a></li>
-      </ul>
-    </div>
-  </div>
-  
+   
+   
   <!-- JS Libraries -->
   
   <script src="js/lib/jquery-1.5.1.min.js"></script>
